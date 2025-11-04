@@ -6,6 +6,10 @@ Main Application Entry Point
 
 import sys
 import os
+
+# ADD THE CURRENT DIRECTORY TO PYTHON PATH - THIS FIXES THE ISSUE
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from scanners.fork_target_discoverer import ForkTargetDiscoverer
 from scanners.repo_cloner import RepoCloner
 from detectors.universal_v2_scanner import UniversalV2Scanner
@@ -54,7 +58,7 @@ class SeekProResearch:
                 logger.warning(f"⚠️ Failed to acquire: {target['name']}")
         
         # Step 3: Vulnerability scanning
-        logger.info("�� Phase 2: Vulnerability Scanning")
+        logger.info("🔍 Phase 2: Vulnerability Scanning")
         scan_results = self.v2_scanner.batch_scan_protocols(protocols_with_repos)
         
         # Step 4: Generate reports
