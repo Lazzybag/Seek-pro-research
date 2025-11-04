@@ -7,8 +7,8 @@ Main Application Entry Point
 import sys
 import os
 
-# ADD THE CURRENT DIRECTORY TO PYTHON PATH - THIS FIXES THE ISSUE
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# CRITICAL FIX: Add current directory to Python path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from scanners.fork_target_discoverer import ForkTargetDiscoverer
 from scanners.repo_cloner import RepoCloner
